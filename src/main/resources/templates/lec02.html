@@ -10,6 +10,16 @@
   <div th:if="${userName}">
     Hi [[${userName}]]
   </div>
+  <a href="/lec02janken?hand=Gu">ぐー</a>
+  <a href="/lec02janken?hand=Choki">ちょき</a>
+  <a href="/lec02janken?hand=Pa">ぱー</a>
+
+  <div th:if="${janken}">
+    <p>あなたの手 [[${hand}]]</p>
+    <p>相手の手 [[${cpuHand}]]</p>
+    <p>結果 [[${syouhai}]]</p>
+  </div>
+
 </body>
 
 </html>
