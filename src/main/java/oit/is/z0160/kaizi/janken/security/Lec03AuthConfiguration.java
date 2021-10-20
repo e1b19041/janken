@@ -27,7 +27,12 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
     // htpasswdでBCryptエンコードを行った後の文字列をパスワードとして指定している．
     auth.inMemoryAuthentication().withUser("userB")
         .password(passwordEncoder().encode("pBss")).roles("USER");
+
+    auth.inMemoryAuthentication().withUser("ほんだ").password(passwordEncoder().encode("honda")).roles("USER");
+
   }
+
+
 
   @Bean
   PasswordEncoder passwordEncoder() {
