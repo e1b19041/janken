@@ -22,6 +22,14 @@
   <div th:if="${userName}">
     Hi [[${userName}]]
   </div>
+
+  <div th:each="users,stat:${users}">
+    <tr>
+      <td>ID:[[${users.id}]]</td>
+      <td>ユーザ名:[[${users.name}]]</td>
+    </tr>
+  </div>
+
   <a href="/lec02janken?hand=Gu">ぐー</a>
   <a href="/lec02janken?hand=Choki">ちょき</a>
   <a href="/lec02janken?hand=Pa">ぱー</a>
