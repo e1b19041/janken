@@ -13,6 +13,8 @@ import oit.is.z0160.kaizi.janken.model.Entry;
 import oit.is.z0160.kaizi.janken.model.Janken;
 import oit.is.z0160.kaizi.janken.model.User;
 import oit.is.z0160.kaizi.janken.model.UserMapper;
+import oit.is.z0160.kaizi.janken.model.Match;
+import oit.is.z0160.kaizi.janken.model.MatchMapper;
 
 
 @Controller
@@ -23,6 +25,10 @@ public class Lec02Controller{
 
   @Autowired
   UserMapper userMapper;
+
+  @Autowired
+  MatchMapper matchMapper;
+
 
   /*@GetMapping("/lec02")
   public String lec02() {
@@ -45,6 +51,9 @@ public class Lec02Controller{
     model.addAttribute("cpuHand",janken.cpuHand);
     model.addAttribute("syouhai",janken.syouhai);
 
+    ArrayList<Match> matches = matchMapper.selectAllMatch();
+    model.addAttribute("matches", matches);
+
     return "lec02.html";
   }
 
@@ -60,12 +69,5 @@ public class Lec02Controller{
 
     return "lec02.html";
   }
-
-  /*@GetMapping("/lec02")
-  public String selectUser(ModelMap model) {
-    ArrayList<User> users = userMapper.selectAllUser();
-    model.addAttribute("users", users);
-    return "lec02.html";
-  }*/
 
 }

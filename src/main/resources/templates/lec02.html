@@ -40,6 +40,16 @@
     <p>結果 [[${syouhai}]]</p>
   </div>
 
+  <div th:each="matches,stat:${matches}">
+    <tr>
+      <td>ID:[[${matches.id}]]</td>
+      <td>ユーザ1:[[${matches.user1}]]</td>
+      <td>ユーザ2:[[${matches.user2}]]</td>
+      <td>ユーザ1の手:[[${matches.user1Hand}]]</td>
+      <td>ユーザ2の手:[[${matches.user2Hand}]]</td>
+    </tr>
+  </div>
+
 </body>
 
 </html>
