@@ -1,5 +1,6 @@
 package oit.is.z0160.kaizi.janken.controller;
 
+import java.util.ArrayList;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +11,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import oit.is.z0160.kaizi.janken.model.Entry;
 import oit.is.z0160.kaizi.janken.model.Janken;
+import oit.is.z0160.kaizi.janken.model.User;
+import oit.is.z0160.kaizi.janken.model.UserMapper;
+import oit.is.z0160.kaizi.janken.model.Match;
+import oit.is.z0160.kaizi.janken.model.MatchMapper;
+
 
 @Controller
 public class Lec02Controller{
 
   @Autowired
   private Entry entry;
+
+  @Autowired
+  UserMapper userMapper;
+
+  @Autowired
+  MatchMapper matchMapper;
+
 
   /*@GetMapping("/lec02")
   public String lec02() {
@@ -38,6 +51,9 @@ public class Lec02Controller{
     model.addAttribute("cpuHand",janken.cpuHand);
     model.addAttribute("syouhai",janken.syouhai);
 
+    ArrayList<Match> matches = matchMapper.selectAllMatch();
+    model.addAttribute("matches", matches);
+
     return "lec02.html";
   }
 
@@ -48,9 +64,10 @@ public class Lec02Controller{
     model.addAttribute("entry", this.entry);
     model.addAttribute("userName",loginUser);
 
+    ArrayList<User> users = userMapper.selectAllUser();
+    model.addAttribute("users", users);
+
     return "lec02.html";
   }
-
-
 
 }

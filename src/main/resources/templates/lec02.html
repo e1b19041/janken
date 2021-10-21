@@ -22,6 +22,14 @@
   <div th:if="${userName}">
     Hi [[${userName}]]
   </div>
+
+  <div th:each="users,stat:${users}">
+    <tr>
+      <td>ID:[[${users.id}]]</td>
+      <td>ユーザ名:[[${users.name}]]</td>
+    </tr>
+  </div>
+
   <a href="/lec02janken?hand=Gu">ぐー</a>
   <a href="/lec02janken?hand=Choki">ちょき</a>
   <a href="/lec02janken?hand=Pa">ぱー</a>
@@ -30,6 +38,16 @@
     <p>あなたの手 [[${hand}]]</p>
     <p>相手の手 [[${cpuHand}]]</p>
     <p>結果 [[${syouhai}]]</p>
+  </div>
+
+  <div th:each="matches,stat:${matches}">
+    <tr>
+      <td>ID:[[${matches.id}]]</td>
+      <td>ユーザ1:[[${matches.user1}]]</td>
+      <td>ユーザ2:[[${matches.user2}]]</td>
+      <td>ユーザ1の手:[[${matches.user1Hand}]]</td>
+      <td>ユーザ2の手:[[${matches.user2Hand}]]</td>
+    </tr>
   </div>
 
 </body>
