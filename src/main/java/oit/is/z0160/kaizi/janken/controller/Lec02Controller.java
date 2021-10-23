@@ -70,4 +70,11 @@ public class Lec02Controller{
     return "lec02.html";
   }
 
+  @GetMapping("/match")
+  public String match(@RequestParam String name,Principal prin,ModelMap model){
+    String loginUser=prin.getName();
+    model.addAttribute("userName",loginUser);
+    model.addAttribute("cpuName",name);
+    return "match.html";
+  }
 }
