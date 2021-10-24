@@ -3,7 +3,7 @@ CREATE TABLE users (
     name CHAR NOT NULL
 );
 CREATE TABLE matches (
-    id INT NOT NULL PRIMARY KEY,
+    id IDENTITY,
     user1 INT NOT NULL,
     user2 INT NOT NULL,
     user1Hand CHAR NOT NULL,
