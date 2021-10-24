@@ -14,4 +14,18 @@
   <div th:if="${cpuName}">
     [[${cpuName}]]
   </div>
+
+  <a href="/matchjanken?hand=Gu">ぐー</a>
+  <a href="/matchjanken?hand=Choki">ちょき</a>
+  <a href="/matchjanken?hand=Pa">ぱー</a>
+
+  <div th:if="${janken}">
+    <p>あなたの手 [[${hand}]]</p>
+    <p>相手の手 [[${cpuHand}]]</p>
+    <p>結果 [[${syouhai}]]</p>
+  </div>
+
+  <p>
+  <a href="/lec02">もどる</a>
+  </p>
 </body>
