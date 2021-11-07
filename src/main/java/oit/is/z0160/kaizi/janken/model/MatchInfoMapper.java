@@ -10,8 +10,12 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface MatchInfoMapper {
 
+  @Select("SELECT id,user1,user2,isActive from matchinfo where isActive = true;")
+  ArrayList<MatchInfo>
+  selectByIsActive();
+
   @Insert("INSERT INTO matchinfo (user1,user2,user1Hand,isActive) VALUES (#{user1},#{user2},#{user1Hand},#{isActive});")
   @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
   void insertMatchInfo(MatchInfo matchInfo);
-  
+
 }

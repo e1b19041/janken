@@ -75,6 +75,8 @@ public class Lec02Controller{
     model.addAttribute("users", users);
     ArrayList<Match> matches = matchMapper.selectAllMatch();
     model.addAttribute("matches", matches);
+    ArrayList<MatchInfo> matchInfo = matchInfoMapper.selectByIsActive();
+    model.addAttribute("matchInfo",matchInfo);
 
     return "lec02.html";
   }
