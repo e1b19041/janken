@@ -17,6 +17,8 @@ import oit.is.z0160.kaizi.janken.model.User;
 import oit.is.z0160.kaizi.janken.model.UserMapper;
 import oit.is.z0160.kaizi.janken.model.Match;
 import oit.is.z0160.kaizi.janken.model.MatchMapper;
+import oit.is.z0160.kaizi.janken.model.MatchInfo;
+import oit.is.z0160.kaizi.janken.model.MatchInfoMapper;
 
 
 @Controller
@@ -30,6 +32,9 @@ public class Lec02Controller{
 
   @Autowired
   MatchMapper matchMapper;
+
+  @Autowired
+  MatchInfoMapper matchInfoMapper;
 
 
   /*@GetMapping("/lec02")
@@ -84,22 +89,29 @@ public class Lec02Controller{
 
   @GetMapping("/matchjanken")
   @Transactional
-  public String matchjanken(@RequestParam String hand, ModelMap model, Principal prin) {
+  public String matchjanken(@RequestParam String name,@RequestParam String hand, ModelMap model, Principal prin) {
     String loginUser = prin.getName();
     Match match = new Match();
+    MatchInfo matchInfo=new MatchInfo();
     Janken janken =new Janken(hand);
     User user1 = userMapper.selectByName(loginUser);
-    User user2 = userMapper.selectByName("CPU");
+    User user2 = userMapper.selectByName(name);
     match.setUser1(user1.getId());
     match.setUser2(user2.getId());
     match.setUser1Hand(janken.hand);
     match.setUser2Hand(janken.cpuHand);
     matchMapper.insertMatch(match);
+    matchInfo.setUser1(user1.getId());
+    matchInfo.setUser2(user2.getId());
+    matchInfo.setUser1Hand(janken.hand);
+    matchInfo.setIsActive(true);
+    matchInfoMapper.insertMatchInfo(matchInfo);
     model.addAttribute("janken",janken);
     model.addAttribute("hand",janken.hand);
     model.addAttribute("cpuHand",janken.cpuHand);
     model.addAttribute("syouhai",janken.syouhai);
+    model.addAttribute("userName",loginUser);
 
-    return "match.html";
+    return "wait.html";
   }
 }
