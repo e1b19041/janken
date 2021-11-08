@@ -4,6 +4,19 @@
 <head>
   <meta charset="utf-8">
   <title>SpringBoot Sample4-1</title>
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('async');
+      sse.onmessage = function (event) {
+        console.log("sse.onmessage")
+        console.log(event.data);
+        var matches_list = JSON.parse(event.data);//JSONオブジェクトとしてparse
+        var tbody = document.getElementById("fruits_list");
+        tbody.innerHTML = fruits_table;//idがfruits_listのtbodyのHTMLを差し替える
+
+      }
+    }
+  </script>
 </head>
 
 <body>
