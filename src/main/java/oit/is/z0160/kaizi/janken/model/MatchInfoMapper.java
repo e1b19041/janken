@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface MatchInfoMapper {
 
-  @Select("SELECT id,user1,user2,isActive from matchinfo where isActive = true;")
+  @Select("SELECT id,user1,user2,user1Hand,isActive from matchinfo where isActive = true;")
   ArrayList<MatchInfo>
   selectByIsActive();
 
